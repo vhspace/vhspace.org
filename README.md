@@ -1,3 +1,5 @@
+[![Seed Status](https://api.seed.run/vhs/vhspace-org/stages/prod/build_badge)](https://console.seed.run/vhs/vhspace-org)
+
 # Virtual HackerSpace
 
 - React web app ([vhspace.org](https://vhspace.org))
