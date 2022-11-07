@@ -40,3 +40,7 @@ CDK infrastructure as code.
 
 - Route53 - creates hostedzone for vhspace.org and requests ACM certificate
 - Web - builds our react app and creates a CloudFront distribution to host it
+
+### Deployments
+
+Pushes to `main` are deployed by <https://seed.run>
