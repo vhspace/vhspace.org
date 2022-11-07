@@ -10,5 +10,5 @@ export default function (app: App) {
       format: "esm",
     },
   });
-  app.stack(Route53).stack(CloudFront);
+  app.stack(Route53);
 }
