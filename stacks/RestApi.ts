@@ -2,7 +2,7 @@ import { Api, StackContext, use } from "@serverless-stack/resources";
 import { Route53 } from "./Route53";
 
 export function RestApi({ stack, app }: StackContext) {
-  const { domainName } = use(Route53);
+  const { domainName, hostedZone } = use(Route53);
 
   // CORS allowed origins
   const allowedOrigins = app.local ? ["http://localhost:3300"] : [];
@@ -17,7 +17,9 @@ export function RestApi({ stack, app }: StackContext) {
     },
 
     cors: { allowOrigins: allowedOrigins },
-    customDomain: domainName ? { domainName: `api.${domainName}` } : undefined,
+    customDomain: domainName
+      ? { domainName: `api.${domainName}`, cdk: { hostedZone } }
+      : undefined,
   });
 
   return {

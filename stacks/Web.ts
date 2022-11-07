@@ -7,7 +7,7 @@ import { RestApi } from "./RestApi";
 import { Route53 } from "./Route53";
 
 export function Web({ stack, app }: StackContext) {
-  const { zone, certificateGlobal } = use(Route53);
+  const { hostedZone, certificateGlobal } = use(Route53);
   const { api } = use(RestApi);
   const homeSite = new ReactStaticSite(stack, "HomeSite", {
     path: "web",
@@ -15,11 +15,11 @@ export function Web({ stack, app }: StackContext) {
       REACT_APP_HOSTED_ZONE: process.env.HOSTED_ZONE,
       REACT_APP_API_URL: api.url,
     },
-    customDomain: zone
+    customDomain: hostedZone
       ? {
-          domainName: zone?.zoneName,
+          domainName: hostedZone?.zoneName,
           cdk: {
-            hostedZone: zone,
+            hostedZone,
             certificate: certificateGlobal,
           },
         }

@@ -7,7 +7,7 @@ import { Route53 } from "./Route53";
 
 // not used for now
 export function CloudFront({ stack }: StackContext) {
-  const { certificateGlobal, domainName, zone } = use(Route53);
+  const { certificateGlobal, domainName, hostedZone } = use(Route53);
 
   const distribution = new Distribution(stack, "Home", {
     defaultBehavior: {
@@ -24,13 +24,13 @@ export function CloudFront({ stack }: StackContext) {
   });
 
   // create DNS records for homepage
-  if (zone) {
+  if (hostedZone) {
     new ARecord(stack, "HomeSiteARecord", {
-      zone,
+      zone: hostedZone,
       target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
     });
     new AaaaRecord(stack, "HomeSiteAaaaRecord", {
-      zone,
+      zone: hostedZone,
       target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
     });
   }

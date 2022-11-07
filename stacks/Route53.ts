@@ -8,7 +8,7 @@ import { HostedZone, ARecord, RecordTarget } from "aws-cdk-lib/aws-route53";
 export function Route53({ stack }: StackContext) {
   const zoneName = process.env.HOSTED_ZONE;
   if (!zoneName) return {};
-  const zone = new HostedZone(stack, "Zone", {
+  const hostedZone = new HostedZone(stack, "Zone", {
     zoneName,
   });
 
@@ -19,10 +19,10 @@ export function Route53({ stack }: StackContext) {
     {
       domainName: zoneName,
       subjectAlternativeNames: [`*.${zoneName}`],
-      hostedZone: zone,
+      hostedZone: hostedZone,
       region: "us-east-1",
     }
   );
 
-  return { zone, certificateGlobal, domainName: zoneName };
+  return { hostedZone, certificateGlobal, domainName: zoneName };
 }
