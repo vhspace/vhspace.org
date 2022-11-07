@@ -1,24 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+export const NOTION_HOME_URL =
+  "https://xn--yu8h.notion.site/What-is-a-Virtual-HackerSpace-2f6b96d139e144ef8b3677c2852db910";
 
 function App() {
+  window.location.href = NOTION_HOME_URL;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="App-header">Virtual HackerSpace</header>
+      <pre>Redirecting...</pre>
     </div>
   );
 }
