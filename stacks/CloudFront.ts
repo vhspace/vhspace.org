@@ -5,10 +5,11 @@ import { AaaaRecord, ARecord, RecordTarget } from "aws-cdk-lib/aws-route53";
 import { CloudFrontTarget } from "aws-cdk-lib/aws-route53-targets";
 import { Route53 } from "./Route53";
 
+// not used for now
 export function CloudFront({ stack }: StackContext) {
   const { certificateGlobal, domainName, zone } = use(Route53);
 
-  const distribution = new Distribution(stack, "HomeSiteDistribution", {
+  const distribution = new Distribution(stack, "Home", {
     defaultBehavior: {
       origin: new HttpOrigin("xn--yu8h.notion.site", {
         originPath:

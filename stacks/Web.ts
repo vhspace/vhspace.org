@@ -3,16 +3,17 @@ import {
   StackContext,
   use,
 } from "@serverless-stack/resources";
-import { CloudFront } from "./CloudFront";
+import { RestApi } from "./RestApi";
 import { Route53 } from "./Route53";
 
 export function Web({ stack, app }: StackContext) {
-  const { distribution } = use(CloudFront);
   const { zone, certificateGlobal } = use(Route53);
+  const { api } = use(RestApi);
   const homeSite = new ReactStaticSite(stack, "HomeSite", {
     path: "web",
     environment: {
       REACT_APP_HOSTED_ZONE: process.env.HOSTED_ZONE,
+      REACT_APP_API_URL: api.url,
     },
     customDomain: zone
       ? {
