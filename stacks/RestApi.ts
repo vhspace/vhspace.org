@@ -17,6 +17,7 @@ export function RestApi({ stack, app }: StackContext) {
     },
 
     cors: { allowOrigins: allowedOrigins },
+    customDomain: domainName ? { domainName: `api.${domainName}` } : undefined,
   });
 
   return {
