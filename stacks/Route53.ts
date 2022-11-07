@@ -7,7 +7,7 @@ import { HostedZone, ARecord, RecordTarget } from "aws-cdk-lib/aws-route53";
  */
 export function Route53({ stack }: StackContext) {
   const zoneName = process.env.HOSTED_ZONE;
-  if (!zoneName) throw new Error("HOSTED_ZONE is not set");
+  if (!zoneName) return {};
   const zone = new HostedZone(stack, "HomeSiteZone", { zoneName });
 
   // request a certificate with ACM

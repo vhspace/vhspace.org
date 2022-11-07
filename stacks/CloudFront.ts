@@ -16,21 +16,23 @@ export function CloudFront({ stack }: StackContext) {
       }),
     },
 
-    certificate: certificateGlobal,
-    domainNames: [domainName, `www.${domainName}`],
-    comment: `Home site for ${domainName}`,
+    ...(certificateGlobal ? { certificate: certificateGlobal } : {}),
+    ...(domainName ? { domainNames: [domainName, `www.${domainName}`] } : {}),
+    comment: `Home site for ${domainName || stack.stage}`,
     enableIpv6: true,
   });
 
-  // create DNS records
-  new ARecord(stack, "HomeSiteARecord", {
-    zone,
-    target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
-  });
-  new AaaaRecord(stack, "HomeSiteAaaaRecord", {
-    zone,
-    target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
-  });
+  // create DNS records for homepage
+  if (zone) {
+    new ARecord(stack, "HomeSiteARecord", {
+      zone,
+      target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
+    });
+    new AaaaRecord(stack, "HomeSiteAaaaRecord", {
+      zone,
+      target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
+    });
+  }
 
   return {
     distribution,
