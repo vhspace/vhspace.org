@@ -12,46 +12,88 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <div className={styles.logo}>
+          <img src="/vhspace-black.svg" alt="V Logo" />
+        </div>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          {/* Welcome to <a href="https://nextjs.org">Next.js!</a> */}
+          Welcome to a Virtual HackerSpace!
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
+        A hackerspace is a place for a community to form around the idea of making things 
+        and sharing knowledge. Many real-world hackerspaces exist where members can hold 
+        meetups, teach classes, use tools like laser cutters or soldering irons. 
+        A virtual hackerspace can skip out on costs like rent and tools, and associated drama. 
+        People can collaborate from all over the world.
         </p>
 
+        {/* <p className={styles.description}>
+          Get started by editing{' '}
+          <code className={styles.code}>pages/index.tsx</code>
+        </p> */}
+
+        <h2>
+          How can I participate?
+        </h2>
+
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <a href="https://discord.gg/RE93FmF6Um" className={styles.card}>
+            <h2>Community Help &rarr;</h2>
+            <p>Ask or answer technical questions. Get help or share your expertise.</p>
           </a>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+          <a href="https://discord.gg/RE93FmF6Um" className={styles.card}>
+            <h2>Hackathons &rarr;</h2>
+            <p>Participate in hackathons to solve complicated problems together in less time.</p>
           </a>
 
           <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
+            href="https://discord.gg/RE93FmF6Um"
             className={styles.card}
           >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
+            <h2>Build Together &rarr;</h2>
+            <p>Collaborate on projects, solve problems, co-found new projects. From software to innovative gardening. </p>
           </a>
 
           <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="https://vhspace.social/"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.card}
           >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+            <h2>Decentralized Social &rarr;</h2>
+            <p> Join <code className={styles.code}>vhspace.social</code> - a Decentralized Social Media app built on top of Mastodon. Join the movement for free. Move any time. 
             </p>
           </a>
         </div>
+
+        <div className={styles.col}>
+          <button className={styles.button}>
+          <a
+              href="https://discord.gg/RE93FmF6Um"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.btnLink}
+            > 
+              <h2>Join Discord &rarr;</h2>
+            </a>
+          </button>
+        </div>
+
+        <div className={styles.col}>
+          <button className={styles.button}>
+          <a
+              href="https://vhspace.social/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.btnLink}
+            > 
+              <h2>vhspace.social account &rarr;</h2>
+            </a>
+          </button>
+        </div>
+
       </main>
 
       <footer className={styles.footer}>
@@ -60,9 +102,9 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Copyleft © 2022 Virtual HackerSpace (VHS) {' '}
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            {/* <Image src="/vhspace.svg" alt="Virtual HackerSpace Logo" width={40} height={20} /> */}
           </span>
         </a>
       </footer>
