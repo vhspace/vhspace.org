@@ -58,13 +58,14 @@ import { RecordTarget } from "aws-cdk-lib/aws-route53";
 // }
 
 export interface MastodonProps {
-  localDomain: string; // unique indentifer for the instance
+  webDomain?: string; // e.g. mastodon.vhspace.social
+  localDomain?: string; // e.g. vhspace.social
   zone: route53.HostedZone;
 }
 
 export function Mastodon(
   { stack, app }: StackContext,
-  { zone, localDomain }: MastodonProps
+  { zone, webDomain, localDomain }: MastodonProps
 ) {
   const { vpc } = use(Network);
   const postgres = use(Postgres);
@@ -83,28 +84,38 @@ export function Mastodon(
   //   domainName: "mastodon.example.com",
   // });
 
+  const hostname = zone.zoneName;
+  const webHostname = webDomain || hostname;
+  const localHostname = localDomain || hostname;
+  const streamHostname = "stream." + hostname;
+
   const environment = {
     DB_HOST: postgres.db.dbInstanceEndpointAddress,
     DB_PORT: postgres.db.dbInstanceEndpointPort,
-    LOCAL_DOMAIN: localDomain,
-    STREAMING_API_BASE_URL: "mastodon-stream.example.com",
+    LOCAL_DOMAIN: localHostname,
+    WEB_DOMAIN: webHostname,
+    STREAMING_API_BASE_URL: streamHostname,
     DB_PASS: postgres.db.secret?.secretValueFromJson("password").toString()!,
     DB_USER: postgres.db.secret?.secretValueFromJson("username").toString()!,
     DB_NAME: postgres.db.secret?.secretValueFromJson("db").toString()!,
     REDIS_HOST: redis.cluster.attrRedisEndpointAddress,
     REDIS_PORT: redis.cluster.attrRedisEndpointPort,
-    SECRET_KEY_BASE: "<REDACTED>",
-    OTP_SECRET: "<REDACTED>",
+    SECRET_KEY_BASE: secret.secretValueFromJson("SECRET_KEY_BASE").toString()!,
+    OTP_SECRET: secret.secretValueFromJson("SECRET_KEY_BASE").toString()!,
     S3_ENABLED: "true",
     S3_BUCKET: mastodonBucket.bucketName,
+    SMTP_SERVER: process.env.SMTP_SERVER!,
+    SMTP_PORT: "587",
+    SMTP_LOGIN: secret.secretValueFromJson("SECRET_KEY_BASE").toString()!,
+    SMTP_PASSWORD: secret.secretValueFromJson("SECRET_KEY_BASE").toString()!,
+
+    // how to generate these?
+    // VAPID_PRIVATE_KEY:  ,
+    // VAPID_PUBLIC_KEY:  ,
+
+    // search
     // ES_ENABLED: "true",
     // ES_HOST: search.domain.attrDomainEndpoint,
-    SMTP_SERVER: "smtp.mailgun.org",
-    SMTP_PORT: "587",
-    SMTP_LOGIN: "<REDACTED>",
-    SMTP_PASSWORD: "<REDACTED>",
-    VAPID_PRIVATE_KEY: "<REDACTED>",
-    VAPID_PUBLIC_KEY: "<REDACTED>",
   };
 
   const image = ecs.ContainerImage.fromRegistry("tootsuite/mastodon");
@@ -149,13 +160,14 @@ export function Mastodon(
     "MastodonWebCert",
     {
       hostedZone: zone,
-      domainName: "mastodon.example.com",
+      domainName: localHostname,
+      subjectAlternativeNames: [`*.${localHostname}`],
     }
   );
 
   new route53.ARecord(stack, "WebRecord", {
     zone,
-    recordName: "mastodon",
+    recordName: localHostname,
     target: RecordTarget.fromAlias(
       new route53_targets.LoadBalancerTarget(webLB)
     ),
