@@ -7,6 +7,7 @@
     "start:web": "pnpm run -C web start",
     "start:web:sst": "pnpm run -C web start:sst",
     "build": "sst build",
+    "build:prod": "sst build --profile vhs-prod --region us-east-1 --stage prod",
     "deploy": "sst deploy",
     "deploy:prod": "sst deploy --profile vhs-prod --region us-east-1 --stage prod",
     "remove": "sst remove",
