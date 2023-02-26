@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -17,15 +17,17 @@ export default function Home() {
         </div>
         <h1 className={styles.title}>
           {/* Welcome to <a href="https://nextjs.org">Next.js!</a> */}
-          Welcome to a Virtual HackerSpace!
+          Welcome to Virtual HackerSpace!
         </h1>
 
         <p className={styles.description}>
-        A hackerspace is a place for a community to form around the idea of making things 
-        and sharing knowledge. Many real-world hackerspaces exist where members can hold 
-        meetups, teach classes, use tools like laser cutters or soldering irons. 
-        A virtual hackerspace can skip out on costs like rent and tools, and associated drama. 
-        People can collaborate from all over the world.
+          A hackerspace is a place for a community to form around the idea of
+          making things and sharing knowledge. Many real-world hackerspaces
+          exist where members can hold meetups, teach classes, use tools like
+          laser cutters or soldering irons. <br />
+          A virtual hackerspace can skip out on costs like rent and tools, and
+          associated drama. <br />
+          People can collaborate from all over the world.
         </p>
 
         {/* <p className={styles.description}>
@@ -33,27 +35,30 @@ export default function Home() {
           <code className={styles.code}>pages/index.tsx</code>
         </p> */}
 
-        <h2>
-          How can I participate?
-        </h2>
+        <h2>How can I participate?</h2>
 
         <div className={styles.grid}>
           <a href="https://discord.gg/RE93FmF6Um" className={styles.card}>
             <h2>Community Help &rarr;</h2>
-            <p>Ask or answer technical questions. Get help or share your expertise.</p>
+            <p>
+              Ask or answer technical questions. Get help or share your
+              expertise.
+            </p>
           </a>
 
           <a href="https://discord.gg/RE93FmF6Um" className={styles.card}>
             <h2>Hackathons &rarr;</h2>
-            <p>Participate in hackathons to solve complicated problems together in less time.</p>
+            <p>
+              Participate in hackathons to solve complicated problems together.
+            </p>
           </a>
 
-          <a
-            href="https://discord.gg/RE93FmF6Um"
-            className={styles.card}
-          >
+          <a href="https://discord.gg/RE93FmF6Um" className={styles.card}>
             <h2>Build Together &rarr;</h2>
-            <p>Collaborate on projects, solve problems, co-found new projects. From software to innovative gardening. </p>
+            <p>
+              Collaborate on projects, solve problems, co-found new projects.
+              From software to innovative gardening.
+            </p>
           </a>
 
           <a
@@ -63,19 +68,22 @@ export default function Home() {
             className={styles.card}
           >
             <h2>Decentralized Social &rarr;</h2>
-            <p> Join <code className={styles.code}>vhspace.social</code> - a Decentralized Social Media app built on top of Mastodon. Join the movement for free. Move any time. 
+            <p>
+              Join <code className={styles.code}>vhspace.social</code> - a
+              community-run Decentralized Social Media app built on top of
+              Mastodon. Join the movement for free. Move any time.
             </p>
           </a>
         </div>
 
         <div className={styles.col}>
           <button className={styles.button}>
-          <a
+            <a
               href="https://discord.gg/RE93FmF6Um"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.btnLink}
-            > 
+            >
               <h2>Join Discord &rarr;</h2>
             </a>
           </button>
@@ -83,17 +91,16 @@ export default function Home() {
 
         <div className={styles.col}>
           <button className={styles.button}>
-          <a
+            <a
               href="https://vhspace.social/"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.btnLink}
-            > 
-              <h2>vhspace.social account &rarr;</h2>
+            >
+              <h2>vhspace.social media &rarr;</h2>
             </a>
           </button>
         </div>
-
       </main>
 
       <footer className={styles.footer}>
@@ -102,12 +109,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Copyleft © 2022 Virtual HackerSpace (VHS) {' '}
+          Copyleft © {new Date().getFullYear()} Virtual HackerSpace (VHS)
           <span className={styles.logo}>
             {/* <Image src="/vhspace.svg" alt="Virtual HackerSpace Logo" width={40} height={20} /> */}
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }

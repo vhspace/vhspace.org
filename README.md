@@ -17,13 +17,13 @@ npm i -g pnpm
 pnpm i
 
 # backend
-pnpm start  # deploy AWS resources and run sst backend local dev server
+pnpm dev  # deploy AWS resources and run sst backend local dev server
 
 # frontend
-pnpm start:web  # start react local dev server (not connected to local backend)
+pnpm dev:web  # start react local dev server (not connected to local backend)
 
 # if running sst
-pnpm start:web:sst  # start react local dev server talking to sst backend
+pnpm dev:web:sst  # start react local dev server talking to sst backend
 ```
 
 ## Contents

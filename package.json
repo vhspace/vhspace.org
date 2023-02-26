@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "sst start",
-    "start:web": "pnpm run -C web start",
-    "start:web:sst": "pnpm run -C web start:sst",
+    "dev": "sst dev",
+    "dev:web": "pnpm run -C web dev",
+    "dev:web:sst": "pnpm run -C web dev:sst",
     "build": "sst build",
     "build:prod": "sst build --profile vhs-prod --region us-east-1 --stage prod",
     "deploy": "sst deploy",
