@@ -11,6 +11,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <div className={styles.logo}>
+          <img src="/vhs1.svg" alt="V Logo" />
+        </div>
+        <br />
+
         <h1 className={styles.title}>Virtual HackerSpace</h1>
 
         <p className={styles.description}>
@@ -22,10 +27,6 @@ export default function Home() {
           associated drama. <br />
           People can collaborate from all over the world.
         </p>
-
-        <div className={styles.logo}>
-          <img src="/vhspace-black.svg" alt="V Logo" />
-        </div>
 
         <h2>How can I participate?</h2>
 
@@ -59,10 +60,10 @@ export default function Home() {
             rel="noopener noreferrer"
             className={styles.card}
           >
-            <h2>Decentralized Social &rarr;</h2>
+            <h2>Fediverse &rarr;</h2>
             <p>
               Join <code className={styles.code}>vhspace.social</code> - a
-              community-run Decentralized Social Media app built on top of
+              community-run Decentralized Social Media site built on top of
               Mastodon. Join the movement for free. Move any time.
             </p>
           </a>
