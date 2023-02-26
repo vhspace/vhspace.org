@@ -15,9 +15,9 @@ export default function Home() {
 
         <p className={styles.description}>
           A hackerspace is a place for a community to form around the idea of
-          making things and sharing knowledge. Many real-world hackerspaces
-          exist where members can hold meetups, teach classes, use tools like
-          laser cutters or soldering irons. <br />
+          making things and sharing knowledge. <br />
+          Many real-world hackerspaces exist where members can hold meetups,
+          teach classes, use tools like laser cutters or soldering irons. <br />
           A virtual hackerspace can skip out on costs like rent and tools, and
           associated drama. <br />
           People can collaborate from all over the world.
